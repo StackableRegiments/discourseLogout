@@ -1,8 +1,8 @@
 en:
   site_settings:
-    enhanced_logout_enabled: 'Enable enhanced logout endpoint'
-    enhanced_logout_should_clear_cookies: 'Should we clear the browser session cookies?'
-    enhanced_logout_should_clear_browser_session_history: 'Should we clear the browser session history?'
-    enhanced_logout_should_redirect: 'Should we redirect the user after logging out?'
-    enhanced_logout_redirect_url: 'Redirect to this url after logging out'
-    enhanced_logout_custom_logout_page_html: 'Html to show on the logout page'
+    enhancedLogout_enabled: 'Enable enhanced logout endpoint'
+    enhancedLogout_should_clear_cookies: 'Should we clear the browser session cookies?'
+    enhancedLogout_should_clear_browser_session_history: 'Should we clear the browser session history?'
+    enhancedLogout_should_redirect: 'Should we redirect the user after logging out?'
+    enhancedLogout_redirect_url: 'Redirect to this url after logging out'
+    enhancedLogout_custom_logout_page_html: 'Html to show on the logout page'

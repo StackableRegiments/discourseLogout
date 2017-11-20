@@ -4,7 +4,7 @@
 # authors: Stackable Regiments pty ltd
 # url: https://github.com/StackableRegiments/discourseLogout
 
-enabled_site_setting :enhanced_logout_enabled
+enabled_site_setting :enhancedLogout_enabled
 
 after_initialize do
 
@@ -23,7 +23,7 @@ after_initialize do
 		skip_before_action :redirect_to_login_if_required, :check_xhr
 
 		def clearBrowserHistory
-			if SiteSettings.enhanced_logout_should_clear_cookies then
+			if SiteSettings.enhancedLogout_should_clear_cookies? then
 				<<~SCRIPT_CONTENT
 console.log("clearing browser history");
 SCRIPT_CONTENT
@@ -33,7 +33,7 @@ SCRIPT_CONTENT
 		end	
 		
 		def clearCookies
-			if SiteSettings.enhanced_logout_should_clear_browser_session_history then
+			if SiteSettings.enhancedLogout_should_clear_browser_session_history? then
 				<<~SCRIPT_CONTENT
 console.log("clearingCookies");
 SCRIPT_CONTENT
@@ -43,9 +43,9 @@ SCRIPT_CONTENT
 		end
 
 		def redirectAgain
-			if SiteSettings.enhanced_logout_should_redirect && !SiteSettings.enhanced_logout_redirect_url.blank? then
+			if SiteSettings.enhancedLogout_should_redirect? && !SiteSettings.enhancedLogout_redirect_url.blank? then
 				<<~SCRIPT_CONTENT
-var redirectionLocation = "#{SiteSettings.enhanced_logout_redirect_url}";
+var redirectionLocation = "#{SiteSettings.enhancedLogout_redirect_url}";
 console.log("redirecting to",redirectionLocation);
 window.location = redirectionLocation;
 SCRIPT_CONTENT
@@ -55,7 +55,7 @@ SCRIPT_CONTENT
 		end
 		
 		def showContent
-			SiteSettings.enhanced_logout_custom_logout_page_html
+			SiteSettings.enhancedLogout_custom_logout_page_html
 		end
 
 		def index 
