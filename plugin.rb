@@ -35,18 +35,42 @@ SCRIPT_CONTENT
 		def clearCookies
 			if SiteSetting.enhancedLogout_should_clear_browser_session_history? then
 				<<~SCRIPT_CONTENT
-var cookies = document.cookie.split(";");
+var getDocumentCookie = function(){
+	return document.cookie.split(";");
+};
+var getDomainParts = function(){
+	return window.location.hostname.split(".");
+};
+var getPathParts = function(){
+	return window.location.pathname.split("/");
+};
+var cookies = getDocumentCookie();
 console.log("clearingCookies",cookies);
 var oneDay = 24 * 60 * 60 * 1000;
-var expiringDate = new Date(new Date().getTime() - oneDay);
+var expiringDate = new Date(new Date().getTime() - oneDay).toGMTString();
+var domainParts = getDomainParts();
+var pathParts = getPathParts();
 for (var i = 0; i < cookies.length; i++){
 	var cookie = cookies[i];
 	var parts = cookie.split("=");
 	var name = parts[0];
 	var value = parts[1];
-	document.cookie = name+"="+value+"; expires="+expiringDate.toGMTString()+"; path=/";
+	if (name !== ""){
+		var terminalCookie = name+"="+value+"; expires="+expiringDate+"; path=/;";
+		console.log("clearing base cookie: ",cookie,terminalCookie);
+		document.cookie = terminalCookie;
+		for (var di = domainParts.length - 1; di >= 0; di--){
+			for (var pi = 0; pi <= pathParts.length; pi++){
+				var domain = domainParts.slice(di,domainParts.length).join(".");
+				var path = "/"+pathParts.slice(0,pi).join("/");
+				var terminalCookie = name+"="+value+"; expires="+expiringDate+"; path="+path+"; domain="+domain+";"
+				console.log("clearing potential cookie: ",cookie,terminalCookie);
+				document.cookie = terminalCookie;
+			}
+		}
+	}
 }
-cookies = document.cookie.split(";");
+cookies = getDocumentCookie();
 console.log("clearedCookies",cookies);
 SCRIPT_CONTENT
 			else 
