@@ -28,8 +28,13 @@ after_initialize do
 
 		skip_before_action :redirect_to_login_if_required
 	
-		layout "ender"
+		##layout "ender"
 
+		def set_layout
+			File.expand_path("../app/views/layouts/ender.html.erb",__FILE__)
+		end	
+
+=begin
 		def generateRedirectScript
 			redirectUrl = SiteSettings.enhancedlogout_redirectUrl
 			<<-EMBEDDEDSCRIPT
@@ -60,9 +65,6 @@ after_initialize do
 			SiteSettings.enhancedlogout_customLogoutPageHtml
 		end	
 
-		def performPostLogout 
-			render :layout => "ender"
-		end
 
 		def performPostLogoutOld
 			renderedPage = '<html><head>'
@@ -78,6 +80,10 @@ after_initialize do
 			renderedPage = renderedPage + '</head><body>#{customPageContent}</body></html>'
 			render html: renderedPage.html_safe
 		end	
+=end
+		def performPostLogout 
+			render 
+		end
 	end
 
 	Enderpoint::Engine.routes.draw do
