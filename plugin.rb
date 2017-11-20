@@ -54,13 +54,13 @@ module ::EnhancedLogoutEndpoint
 
 		def performPostLogout
 			renderedPage = '<html><head>'
-			if SiteSettings.enhancedlogout_shouldClearCookies? do
+			if SiteSettings.enhancedlogout_shouldClearCookies? 
 				renderedPage = renderedPage + generateCookieRemovalScript
 			end	
-			if SiteSettings.enhancedlogout_shouldClearBrowserSessionHistory? do
+			if SiteSettings.enhancedlogout_shouldClearBrowserSessionHistory? 
 				renderedPage = renderedPage + generateBrowserBackScript
 			end	
-			if SiteSettings.enhancedlogout_shouldRedirect? do
+			if SiteSettings.enhancedlogout_shouldRedirect? 
 				renderedPage = renderedPage + generateCookieRemovalScript
 			end	
 			renderedPage = renderedPage + '</head><body>#{customPageContent}</body></html>'
@@ -75,5 +75,4 @@ module ::EnhancedLogoutEndpoint
 	Discourse::Application.routes.append do
 		mount ::EnhancedLogoutEndpoint::Engine, at: "/enhanced-logout"
 	end	
-
 end	
