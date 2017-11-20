@@ -72,7 +72,7 @@ after_initialize do
 			end	
 			renderedPage = renderedPage + '</head><body>#{customPageContent}</body></html>'
 			puts renderedPage
-			render :html => renderedPage.html_safe
+			render inline: renderedPage.html_safe
 		end	
 	end
 
