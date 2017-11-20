@@ -18,7 +18,7 @@ module ::EnhancedLogoutEndpoint
  		isolate_namespace EnhancedLogoutEndpoint
 	end
 
-	class EnhancedLogoutController < ApplicationController
+	class EnhancedLogoutController < ::Rails::ApplicationController
 		layout :false
 		skip_before_action :redirect_to_login_if_required
 		
