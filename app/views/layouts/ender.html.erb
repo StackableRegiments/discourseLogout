@@ -1,0 +1,14 @@
+<html>
+	<head>
+		<script type="javascript">
+var shouldClearCookies = "<%= SiteSettings.enhancedlogout_shouldClearCookies -%>";
+var shouldClearBrowserSessionHistory = "<%= SiteSettings.enhancedlogout_shouldClearBrowserSessionHistory -%>";
+var shouldRedirect = "<%= SiteSettings.enhancedlogout_shouldRedirect -%>";
+var redirectUrl = "<%= SiteSettings.enhancedlogout_redirectUrl -%>";
+console.log("available variables:",shouldClearCookies,shouldClearBrowserSessionHistory,shouldRedirect,redirectUrl);
+		</script>
+	</head>
+	<body>
+		<%= SiteSettings.enhancedlogout_customLogoutPageHtml %>
+	</body>
+</html>

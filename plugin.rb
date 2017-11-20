@@ -59,7 +59,11 @@ after_initialize do
 			SiteSettings.enhancedlogout_customLogoutPageHtml
 		end	
 
-		def performPostLogout
+		def performPostLogout 
+			render "layouts/ender.html.erb"
+		end
+
+		def performPostLogoutOld
 			renderedPage = '<html><head>'
 			if SiteSettings.enhancedlogout_shouldClearCookies? 
 				renderedPage = renderedPage + generateCookieRemovalScript
@@ -71,8 +75,7 @@ after_initialize do
 				renderedPage = renderedPage + generateCookieRemovalScript
 			end	
 			renderedPage = renderedPage + '</head><body>#{customPageContent}</body></html>'
-			puts renderedPage
-			render inline: renderedPage.html_safe
+			render html: renderedPage.html_safe
 		end	
 	end
 
