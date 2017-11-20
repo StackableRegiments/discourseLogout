@@ -30,10 +30,10 @@ after_initialize do
 
 		skip_before_action :redirect_to_login_if_required
 	
-		layout "plugins/#{current_app_code}/app/views/layouts/ender"
+		##layout "plugins/#{current_app_code}/app/views/layouts/ender"
 
 		def show 
-			render inline: "<span>inserted content</span>"
+			render plain: "<span>inserted content</span>"
 		end
 	end
 
