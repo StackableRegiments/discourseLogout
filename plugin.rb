@@ -38,13 +38,13 @@ after_initialize do
 			prepend_view_path "plugins/#{current_app_code}/app/views"
 		end	
 
-		def performPostLogout 
+		def show 
 			render :layout => "ender"
 		end
 	end
 
 	Enderpoint::Engine.routes.draw do
-		get "/" => "ender#performPostLogout"
+		get "/" => "ender#show"
 	end	
 
 	Discourse::Application.routes.append do
