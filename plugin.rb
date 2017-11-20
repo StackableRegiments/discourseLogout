@@ -77,11 +77,3 @@ module ::EnhancedLogoutEndpoint
 	end	
 
 end	
-
-register_asset 'javascripts/discourse/templates/plugins-enhanced-logout.hbs'
-
-after_initialize do
-	Discourse::Application.routes.append do
-		get '/enhanced-logout' => 'enhanced_logout#index'
-	end
-end	
