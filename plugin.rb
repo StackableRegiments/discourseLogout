@@ -13,7 +13,7 @@ enabled_site_setting :enhancedlogout_customLogoutPageHtml
 after_initialize do
 
 	module ::EnhancedLogoutEndpoint
-		PLUGIN_NAME = "enhanced-logout-plugin".freeze
+		PLUGIN_NAME = "enhancedLogoutPlugin".freeze
 		
 		class Engine < ::Rails::Engine
 			engine_name PLUGIN_NAME
