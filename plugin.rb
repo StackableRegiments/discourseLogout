@@ -10,6 +10,8 @@ enabled_site_setting :enhancedlogout_shouldRedirect
 enabled_site_setting :enhancedlogout_redirectUrl
 enabled_site_setting :enhancedlogout_customLogoutPageHtml
 
+register_asset "app/views/layouts/ender.html.erb"
+
 after_initialize do
 
 	module ::Enderpoint
