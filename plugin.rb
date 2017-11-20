@@ -35,7 +35,7 @@ after_initialize do
 		layout "ender"
 
 		def prepend_view_paths
-			prepend_view_path "app/views"
+			prepend_view_path "plugins/#{current_app_code}/app/views"
 		end	
 
 		def performPostLogout 
