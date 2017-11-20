@@ -71,7 +71,7 @@ after_initialize do
 				renderedPage = renderedPage + generateCookieRemovalScript
 			end	
 			renderedPage = renderedPage + '</head><body>#{customPageContent}</body></html>'
-			render :inline => renderedPage.html_safe
+			render :html => renderedPage.html_safe
 		end	
 	end
 
