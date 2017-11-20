@@ -34,7 +34,10 @@ after_initialize do
 
 		def show 
 			respond_to do |fmt|
-				fmt.html { render :html =>  "<span>inserted content</span>" }
+				fmt.html { render :plain =>  "<span>inserted content</span>" }
+				fmt.plain { render :plain =>  "<span>inserted content</span>" }
+				fmt.json { render :plain =>  "<span>inserted content</span>" }
+				fmt.xml { render :plain =>  "<span>inserted content</span>" }
 			end
 		end
 	end
