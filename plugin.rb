@@ -28,12 +28,15 @@ after_initialize do
 	class Enderpoint::EnderController < ::ApplicationController
 		requires_plugin ::Enderpoint::PLUGIN_NAME
 
-
-		prepend_view_path "app/views"
+		before_action :prepend_view_paths
 
 		skip_before_action :redirect_to_login_if_required
 	
 		layout "ender"
+
+		def prepend_view_paths
+			prepend_view_path "app/views"
+		end	
 
 		def performPostLogout 
 			render :layout => "ender"
