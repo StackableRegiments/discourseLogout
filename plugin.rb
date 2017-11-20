@@ -23,7 +23,7 @@ after_initialize do
 		skip_before_action :redirect_to_login_if_required, :check_xhr
 
 		def clearBrowserHistory
-			if SiteSettings.enhancedLogout_should_clear_cookies? then
+			if SiteSetting.enhancedLogout_should_clear_cookies? then
 				<<~SCRIPT_CONTENT
 console.log("clearing browser history");
 SCRIPT_CONTENT
@@ -33,7 +33,7 @@ SCRIPT_CONTENT
 		end	
 		
 		def clearCookies
-			if SiteSettings.enhancedLogout_should_clear_browser_session_history? then
+			if SiteSetting.enhancedLogout_should_clear_browser_session_history? then
 				<<~SCRIPT_CONTENT
 console.log("clearingCookies");
 SCRIPT_CONTENT
@@ -43,9 +43,9 @@ SCRIPT_CONTENT
 		end
 
 		def redirectAgain
-			if SiteSettings.enhancedLogout_should_redirect? && !SiteSettings.enhancedLogout_redirect_url.blank? then
+			if SiteSetting.enhancedLogout_should_redirect? && !SiteSetting.enhancedLogout_redirect_url.blank? then
 				<<~SCRIPT_CONTENT
-var redirectionLocation = "#{SiteSettings.enhancedLogout_redirect_url}";
+var redirectionLocation = "#{SiteSetting.enhancedLogout_redirect_url}";
 console.log("redirecting to",redirectionLocation);
 window.location = redirectionLocation;
 SCRIPT_CONTENT
@@ -55,7 +55,7 @@ SCRIPT_CONTENT
 		end
 		
 		def showContent
-			SiteSettings.enhancedLogout_custom_logout_page_html
+			SiteSetting.enhancedLogout_custom_logout_page_html
 		end
 
 		def index 
