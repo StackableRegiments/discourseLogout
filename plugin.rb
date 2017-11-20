@@ -30,12 +30,12 @@ after_initialize do
 
 		skip_before_action :redirect_to_login_if_required
 
-		respond_to? :plain
-
 		##layout "plugins/#{current_app_code}/app/views/layouts/ender"
 
 		def show 
-			render plain: "<span>inserted content</span>"
+			respond_to do |fmt|
+				fmt.html { render :html =>  "<span>inserted content</span>" }
+			end
 		end
 	end
 
