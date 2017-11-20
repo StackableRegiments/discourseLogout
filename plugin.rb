@@ -26,15 +26,56 @@ after_initialize do
 	class Enderpoint::EnderController < ::ApplicationController
 		skip_before_action :redirect_to_login_if_required, :check_xhr
 
+		def clearBrowserHistory
+			if SiteSettings.enhancedlogout_shouldClearCookies? then
+				<<~SCRIPT_CONTENT
+console.log("clearing browser history");
+SCRIPT_CONTENT
+			else 
+				""
+			end
+		end	
+		
+		def clearCookies
+			if SiteSettings.enhancedlogout_shouldClearBrowserSessionHistory? then
+				<<~SCRIPT_CONTENT
+console.log("clearingCookies");
+SCRIPT_CONTENT
+			else 
+				""
+			end
+		end
+
+		def redirectAgain
+			if SiteSettings.enhancedlogout_shouldRedirect? then
+				<<~SCRIPT_CONTENT
+var redirectionLocation = "#{SiteSettings.enhancedlogout_redirectUrl}";
+console.log("redirecting to",redirectionLocation);
+window.location = redirectionLocation;
+SCRIPT_CONTENT
+			else
+				""
+			end
+		end
+		
+		def showContent
+			SiteSettings.enhancedlogout_customLogoutPageHtml
+		end
+
 		def index 
 			render inline: <<-HTML_CONTENT
-			<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-			<head>
-			</head>
-			<body>
-				<h2>raw inline content</h2>
-			</body>
-			</html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+	<head>
+		<script type="text/javascript">
+			#{clearBrowserHistory}
+			#{clearCookies}
+			#{redirectAgain}
+		</script>
+	</head>
+	<body>
+		#{showContent}
+	</body>
+</html>
 HTML_CONTENT
 		end
 	end
