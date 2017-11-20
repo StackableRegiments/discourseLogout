@@ -10,8 +10,6 @@ enabled_site_setting :enhancedlogout_shouldRedirect
 enabled_site_setting :enhancedlogout_redirectUrl
 enabled_site_setting :enhancedlogout_customLogoutPageHtml
 
-register_asset "app/views/layouts/ender.html.erb"
-
 after_initialize do
 
 	module ::Enderpoint
@@ -26,24 +24,23 @@ after_initialize do
 	require_dependency "application_controller"
 
 	class Enderpoint::EnderController < ::ApplicationController
-		requires_plugin ::Enderpoint::PLUGIN_NAME
+		skip_before_action :redirect_to_login_if_required, :check_xhr
 
-		skip_before_action :redirect_to_login_if_required
-
-		##layout "plugins/#{current_app_code}/app/views/layouts/ender"
-
-		def show 
-			respond_to do |fmt|
-				fmt.html { render :plain =>  "<span>inserted content</span>" }
-				fmt.plain { render :plain =>  "<span>inserted content</span>" }
-				fmt.json { render :plain =>  "<span>inserted content</span>" }
-				fmt.xml { render :plain =>  "<span>inserted content</span>" }
-			end
+		def index 
+			render inline: <<-HTML_CONTENT
+			<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+			<head>
+			</head>
+			<body>
+				<h2>raw inline content</h2>
+			</body>
+			</html>
+HTML_CONTENT
 		end
 	end
 
 	Enderpoint::Engine.routes.draw do
-		get "/" => "ender#show"
+		get "/" => "ender#index"
 	end	
 
 	Discourse::Application.routes.append do
