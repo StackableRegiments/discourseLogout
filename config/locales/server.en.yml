@@ -6,3 +6,4 @@ en:
     enhancedLogout_should_redirect: 'Should we redirect the user after logging out?'
     enhancedLogout_redirect_url: 'Redirect to this url after logging out'
     enhancedLogout_custom_logout_page_html: 'Html to show on the logout page'
+    enhancedLogout_should_close_tab: 'Should we close the tab after loggin out?'  

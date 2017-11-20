@@ -66,6 +66,18 @@ SCRIPT_CONTENT
 			end
 		end
 		
+		def closeTab
+			if SiteSetting.enhancedLogout_should_close_tab? then
+				<<~SCRIPT_CONTENT
+console.log("attempting to close tab");
+window.open('','_self').close();				
+SCRIPT_CONTENT
+			else 
+				""
+			end
+
+		end
+
 		def showContent
 			SiteSetting.enhancedLogout_custom_logout_page_html
 		end
@@ -78,6 +90,7 @@ SCRIPT_CONTENT
 			#{clearBrowserHistory}
 			#{clearCookies}
 			#{redirectAgain}
+			#{closeTab}
 		</script>	
 	</head>
 	<body>
