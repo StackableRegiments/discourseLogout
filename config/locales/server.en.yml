@@ -1,0 +1,4 @@
+en:
+  site_settings:
+    enhancedlogout_shouldClearCookies: "Clear session cookies?"
+    enhancedlogout_redirectUrl: "Redirect to this url after logging out"  

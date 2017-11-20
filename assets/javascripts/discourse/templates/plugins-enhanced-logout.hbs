@@ -1,0 +1,19 @@
+<div>
+	<h2>Logging out</h2>
+{{#if siteSettings.enhancedlogout_shouldClearCookies}}
+	<script type="text/javascript">
+		console.log("clearing cookies!");
+	</script>
+{{/if}}
+{{#if siteSettings.enhancedlogout_shouldClearBrowserSessionHistory}}
+	<script type="text/javascript">
+		console.log("clearing browserSessionHistory!");
+	</script>
+{{/if}}
+{{#if siteSettings.enhancedlogout_shouldRedirect}}
+	<script type="text/javascript">
+		var logoutUrl = "{{siteSettings.enhancedlogout_shouldRedirect}}";
+		console.log("redirecting to !",logoutUrl);
+	</script>
+{{/if}}
+</div>

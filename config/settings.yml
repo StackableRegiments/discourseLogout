@@ -1,0 +1,13 @@
+plugins:
+  enhancedlogout_shouldClearCookies:
+    default: true
+    client: true
+  enhancedlogout_shouldClearBrowserSessionHistory:
+    default: true
+    client: true    
+  enhancedlogout_shouldRedirect:
+    default: true
+    client: true
+  enhancedlogout_redirectUrl:
+    default: "http://www.google.com"
+    client: true
