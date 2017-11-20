@@ -26,7 +26,6 @@ after_initialize do
 	class Enderpoint::EnderController < ::ApplicationController
 		requires_plugin ::Enderpoint::PLUGIN_NAME
 
-		layout :false
 		skip_before_action :redirect_to_login_if_required
 		
 		def generateRedirectScript

@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<script type="javascript">
+		<script type="text/javascript">
 var shouldClearCookies = "<%= SiteSettings.enhancedlogout_shouldClearCookies -%>";
 var shouldClearBrowserSessionHistory = "<%= SiteSettings.enhancedlogout_shouldClearBrowserSessionHistory -%>";
 var shouldRedirect = "<%= SiteSettings.enhancedlogout_shouldRedirect -%>";
@@ -9,6 +9,7 @@ console.log("available variables:",shouldClearCookies,shouldClearBrowserSessionH
 		</script>
 	</head>
 	<body>
+		<h2>Enhanced Logout</h2>
 		<%= SiteSettings.enhancedlogout_customLogoutPageHtml %>
 	</body>
 </html>
