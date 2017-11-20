@@ -35,7 +35,19 @@ SCRIPT_CONTENT
 		def clearCookies
 			if SiteSetting.enhancedLogout_should_clear_browser_session_history? then
 				<<~SCRIPT_CONTENT
-console.log("clearingCookies");
+var cookies = document.cookie.split(";");
+console.log("clearingCookies",cookies);
+var oneDay = 24 * 60 * 60 * 1000;
+var expiringDate = new Date(new Date().getTime() - oneDay);
+for (var i = 0; i < cookies.length; i++){
+	var cookie = cookies[i];
+	var parts = cookie.split("=");
+	var name = parts[0];
+	var value = parts[1];
+	document.cookie = name+"="+value+"; expires="+expiringDate.toGMTString()+"; path=/";
+}
+cookies = document.cookie.split(";");
+console.log("clearedCookies",cookies);
 SCRIPT_CONTENT
 			else 
 				""
@@ -66,7 +78,7 @@ SCRIPT_CONTENT
 			#{clearBrowserHistory}
 			#{clearCookies}
 			#{redirectAgain}
-		</script>
+		</script>	
 	</head>
 	<body>
 		#{showContent}
