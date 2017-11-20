@@ -27,7 +27,7 @@ after_initialize do
 		skip_before_action :redirect_to_login_if_required, :check_xhr
 
 		def clearBrowserHistory
-			if SiteSettings.enhancedlogout_shouldClearCookies? then
+			if SiteSettings.enhancedlogout_shouldClearCookies then
 				<<~SCRIPT_CONTENT
 console.log("clearing browser history");
 SCRIPT_CONTENT
@@ -37,7 +37,7 @@ SCRIPT_CONTENT
 		end	
 		
 		def clearCookies
-			if SiteSettings.enhancedlogout_shouldClearBrowserSessionHistory? then
+			if SiteSettings.enhancedlogout_shouldClearBrowserSessionHistory then
 				<<~SCRIPT_CONTENT
 console.log("clearingCookies");
 SCRIPT_CONTENT
@@ -47,7 +47,7 @@ SCRIPT_CONTENT
 		end
 
 		def redirectAgain
-			if SiteSettings.enhancedlogout_shouldRedirect? then
+			if SiteSettings.enhancedlogout_shouldRedirect && !SiteSettings.enhancedlogout_redirectUrl.blank? then
 				<<~SCRIPT_CONTENT
 var redirectionLocation = "#{SiteSettings.enhancedlogout_redirectUrl}";
 console.log("redirecting to",redirectionLocation);
