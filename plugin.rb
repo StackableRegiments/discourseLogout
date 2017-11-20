@@ -12,19 +12,19 @@ enabled_site_setting :enhancedlogout_customLogoutPageHtml
 
 after_initialize do
 
-	module ::EnhancedLogoutEndpoint
-		PLUGIN_NAME = "enhanced_logout_plugin".freeze
+	module ::Enderpoint
+		PLUGIN_NAME = "enhanced_logout".freeze
 		
 		class Engine < ::Rails::Engine
 			engine_name PLUGIN_NAME
-			isolate_namespace EnhancedLogoutEndpoint
+			isolate_namespace Enderpoint
 		end
 	end
 
 	require_dependency "application_controller"
 
-	class EnhancedLogoutEndpoint::EnhancedLogoutController < ::ApplicationController
-		requires_plugin ::EnhancedLogoutEndpoint::PLUGIN_NAME
+	class Enderpoint::EnderController < ::ApplicationController
+		requires_plugin ::Enderpoint::PLUGIN_NAME
 
 		layout :false
 		skip_before_action :redirect_to_login_if_required
@@ -75,12 +75,12 @@ after_initialize do
 		end	
 	end
 
-	EnhancedLogoutEndpoint::Engine.routes.draw do
-		get "/" => "enhancedLogout#performPostLogout"
+	Enderpoint::Engine.routes.draw do
+		get "/" => "ender#performPostLogout"
 	end	
 
 	Discourse::Application.routes.append do
-		mount ::EnhancedLogoutEndpoint::Engine, at: "/enhanced-logout"
+		mount ::Enderpoint::Engine, at: "/enhanced-logout"
 	end	
 
 end
