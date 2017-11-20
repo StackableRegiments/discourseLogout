@@ -82,7 +82,7 @@ after_initialize do
 		end	
 =end
 		def performPostLogout 
-			render 
+			render :layout => "ender"
 		end
 	end
 
