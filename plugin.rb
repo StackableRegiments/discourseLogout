@@ -27,7 +27,9 @@ after_initialize do
 		requires_plugin ::Enderpoint::PLUGIN_NAME
 
 		skip_before_action :redirect_to_login_if_required
-		
+	
+		layout "ender"
+
 		def generateRedirectScript
 			redirectUrl = SiteSettings.enhancedlogout_redirectUrl
 			<<-EMBEDDEDSCRIPT
@@ -59,7 +61,7 @@ after_initialize do
 		end	
 
 		def performPostLogout 
-			render
+			render :layout => "ender"
 		end
 
 		def performPostLogoutOld
