@@ -29,7 +29,9 @@ after_initialize do
 		requires_plugin ::Enderpoint::PLUGIN_NAME
 
 		skip_before_action :redirect_to_login_if_required
-	
+
+		respond_to :plain
+
 		##layout "plugins/#{current_app_code}/app/views/layouts/ender"
 
 		def show 
