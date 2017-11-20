@@ -30,7 +30,7 @@ after_initialize do
 
 		skip_before_action :redirect_to_login_if_required
 
-		respond_to :plain
+		respond_to? :plain
 
 		##layout "plugins/#{current_app_code}/app/views/layouts/ender"
 
