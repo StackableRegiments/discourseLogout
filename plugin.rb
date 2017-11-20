@@ -4,11 +4,7 @@
 # authors: Stackable Regiments pty ltd
 # url: https://github.com/StackableRegiments/discourseLogout
 
-enabled_site_setting :enhancedlogout_shouldClearCookies
-enabled_site_setting :enhancedlogout_shouldClearBrowserSessionHistory
-enabled_site_setting :enhancedlogout_shouldRedirect
-enabled_site_setting :enhancedlogout_redirectUrl
-enabled_site_setting :enhancedlogout_customLogoutPageHtml
+enabled_site_setting :enhancedlogout_enabled
 
 after_initialize do
 

@@ -1,4 +1,7 @@
 plugins:
+  enhancedlogout_enabled:
+    default: true
+    client: false
   enhancedlogout_shouldClearCookies:
     default: true
     client: false
