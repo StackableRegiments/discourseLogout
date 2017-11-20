@@ -23,7 +23,9 @@ after_initialize do
 
 	require_dependency "application_controller"
 
-	class EnhancedLogoutController < ::ApplicationController
+	class EnhancedLogoutEndpoint::EnhancedLogoutController < ::ApplicationController
+		requires_plugin PLUGIN_NAME
+
 		layout :false
 		skip_before_action :redirect_to_login_if_required
 		
