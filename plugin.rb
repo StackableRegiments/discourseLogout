@@ -60,7 +60,7 @@ after_initialize do
 		end	
 
 		def performPostLogout 
-			render "layouts/ender.html.erb"
+			render
 		end
 
 		def performPostLogoutOld
