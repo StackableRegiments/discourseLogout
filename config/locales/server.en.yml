@@ -1,4 +1,7 @@
 en:
   site_settings:
-    enhancedlogout_shouldClearCookies: "Clear session cookies?"
-    enhancedlogout_redirectUrl: "Redirect to this url after logging out"  
+    enhancedlogout_shouldClearCookies: 'Should we clear the browser session cookies?'
+    enhancedlogout_shouldClearBrowserSessionHistory: 'Should we clear the browser session history?'
+    enhancedlogout_shouldRedirect: 'Should we redirect the user after logging out?'
+    enhancedlogout_redirectUrl: 'Redirect to this url after logging out'
+    enhancedlogout_customLogoutPageHtml: 'Html to show on the logout page'
