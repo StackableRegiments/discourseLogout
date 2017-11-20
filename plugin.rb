@@ -31,7 +31,7 @@ after_initialize do
 		skip_before_action :redirect_to_login_if_required
 	
 		def show 
-			render :template => "plugins/#{current_app_code}/app/views/layouts/ender"
+			render layout: "plugins/#{current_app_code}/app/views/layouts/ender", html: "<span>inserted content</span>"
 		end
 	end
 
