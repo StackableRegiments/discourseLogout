@@ -1,13 +1,16 @@
 plugins:
   enhancedlogout_shouldClearCookies:
     default: true
-    client: true
+    client: false
   enhancedlogout_shouldClearBrowserSessionHistory:
     default: true
-    client: true    
+    client: false    
   enhancedlogout_shouldRedirect:
     default: true
-    client: true
+    client: false
   enhancedlogout_redirectUrl:
-    default: "http://www.google.com"
-    client: true
+    default: 'http://www.google.com'
+    client: false
+  enhancedlogout_customLogoutPageHtml:
+    default: 'Logging out'
+    client: false    
