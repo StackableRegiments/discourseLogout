@@ -55,15 +55,15 @@ module ::EnhancedLogoutEndpoint
 		def performPostLogout
 			renderedPage = '<html><head>'
 			if SiteSettings.enhancedlogout_shouldClearCookies? do
-				renderedPage = renderedPage + generateCookieRemovalScript()
+				renderedPage = renderedPage + generateCookieRemovalScript
 			end	
 			if SiteSettings.enhancedlogout_shouldClearBrowserSessionHistory? do
-				renderedPage = renderedPage + generateBrowserBackScript()
+				renderedPage = renderedPage + generateBrowserBackScript
 			end	
 			if SiteSettings.enhancedlogout_shouldRedirect? do
-				renderedPage = renderedPage + generateCookieRemovalScript()
+				renderedPage = renderedPage + generateCookieRemovalScript
 			end	
-			renderedPage = renderedPage + '</head><body>#{customPageContent()}</body></html>'
+			renderedPage = renderedPage + '</head><body>#{customPageContent}</body></html>'
 			render :inline => renderedPage.html_safe
 		end	
 	end
