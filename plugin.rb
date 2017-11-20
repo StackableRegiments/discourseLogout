@@ -19,7 +19,9 @@ module ::EnhancedLogoutEndpoint
 	end
 end
 
-class EnhancedLogoutController < ApplicationController
+require_dependency "application_controller"
+
+class EnhancedLogoutController < ::ApplicationController
 	layout :false
 	skip_before_action :redirect_to_login_if_required
 	
