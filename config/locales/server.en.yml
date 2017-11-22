@@ -2,9 +2,9 @@ en:
   site_settings:
     enhancedLogout_enabled: 'Enable enhanced logout endpoint'
     enhancedLogout_should_clear_cookies: 'Should we clear the browser session cookies?'
-    enhancedLogout_should_clear_browser_session_history: 'Should we clear the browser session history?'
+    enhancedLogout_should_clear_browser_session_history: 'Broken: Should we clear the browser session history?'
     enhancedLogout_should_redirect: 'Should we redirect the user after logging out?'
     enhancedLogout_redirect_url: 'Redirect to this url after logging out'
     enhancedLogout_custom_logout_page_html: 'Html to show on the logout page'
-    enhancedLogout_should_close_tab: 'Should we close the tab after logging out?'  
-    enhancedLogout_scrub_browser_history: 'Should we scrub browser history as you navigate throughout the forum?  Note, this will cause issues with the back and forward buttons of your browser.'  
+    enhancedLogout_should_close_tab: 'Should we close the tab after logging out?  Note, this only works on IE and Edge, and may stop working on those browsers at a later date.  Chrome and FF both refuse to allow programmatic closing of tabs which were not opened programmatically.'  
+    enhancedLogout_scrub_browser_history: 'Broken: Should we scrub browser history as you navigate throughout the forum?  Note, this will cause issues with the back and forward buttons of your browser.'  

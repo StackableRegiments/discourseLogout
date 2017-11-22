@@ -6,7 +6,7 @@ plugins:
     default: true
     client: false
   enhancedLogout_should_clear_browser_session_history:
-    default: true
+    default: false
     client: false    
   enhancedLogout_should_redirect:
     default: true

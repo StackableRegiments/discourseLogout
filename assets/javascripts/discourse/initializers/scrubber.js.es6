@@ -6,7 +6,6 @@ import { viewTrackingRequired } from 'discourse/lib/ajax';
 
 function scrubHistory(url,title){
 	if ("history" in window){
-		console.log("scrubbing history using the HTML5 history API");
 		window.history.replaceState({},"","/");
 	}
 };
@@ -16,7 +15,6 @@ export default {
 	initialize(container) {
 		withPluginApi('0.1',api => {
 			var siteSettings = api.container.lookup('site-settings:main');
-			console.log('scrub-time:',siteSettings);
 			if ("enhancedLogout_scrub_browser_history" in siteSettings && siteSettings.enhancedLogout_scrub_browser_history == true){
 				var router = container.lookup('router:main');
 				router.on('willTransition',viewTrackingRequired);
@@ -26,9 +24,12 @@ export default {
 
 				api.onPageChange((url,title) => {
 					console.log("page changed:",url,title);
+/*
+// this doesn't work, because discourse's default JS engine updates the history state after we do, so it puts it back in again.
 					if ("enhancedLogout_scrub_browser_history" in siteSettings && siteSettings.enhancedLogout_scrub_browser_history == true){
 						scrubHistory(url,title);	
 					}
+*/
 				});
 			}
 		});
