@@ -21,9 +21,14 @@ export default {
 				var router = container.lookup('router:main');
 				router.on('willTransition',viewTrackingRequired);
 				router.on('didTransition',cleanDOM);
+
 				startPageTracking(router);
-				onPageChange((url,title) => {
-					scrubHistory(url,title);	
+
+				api.onPageChange((url,title) => {
+					console.log("page changed:",url,title);
+					if ("enhancedLogout_scrub_browser_history" in siteSettings && siteSettings.enhancedLogout_scrub_browser_history == true){
+						scrubHistory(url,title);	
+					}
 				});
 			}
 		});
