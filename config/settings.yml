@@ -20,3 +20,6 @@ plugins:
   enhancedLogout_should_close_tab:
     default: false
     client: false
+  enhancedLogout_scrub_browser_history:
+    default: false
+    client: true    
